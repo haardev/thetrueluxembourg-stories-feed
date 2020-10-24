@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 const Post = ({ coverImage, author, tag, countryCode, title, text }) => {
     const [isExpanded, setExpanded] = useState(false);
-    const [isFavorite, setFavorite] = useState(false);
     const textRef = useRef(null);
 
     const renderTrimString = useCallback((inputText) => {
-        let res = !isExpanded ? inputText.substring(0, 490) : inputText;
+        let res = !isExpanded ? inputText.substring(0, 444) : inputText;
         if(res[res.length] === ' ') {
             res = res.substring(0, res.length - 1);
         }
@@ -27,16 +26,19 @@ const Post = ({ coverImage, author, tag, countryCode, title, text }) => {
 
     return (
         <div className="post">
-            <div className="post__header">
-                { author }| { tag }| <span>{ countryCode }</span>| Bulgaria
+            <div className="post__title">
+                { title }
             </div>
             <div>
                 <div className="post__image">
                     <img src={ coverImage }/>
                 </div>
             </div>
-            <div className="post__title">
-                { title }
+            <div className="post__header">
+                <strong>{ author } {'  '}</strong>{ tag }
+                <div className="post__header__country">
+                    Bulgaria
+                </div>
             </div>
             <div className="post__text">
                 <div ref={ textRef }
@@ -44,8 +46,8 @@ const Post = ({ coverImage, author, tag, countryCode, title, text }) => {
                     { renderTrimString(text) }
                 </div>
             </div>
-            <div className="post__read-more">
-                <i className="fa fa-heart" aria-hidden="true"></i>
+            <div className="post__social-block">
+                
             </div>
         </div>
     );

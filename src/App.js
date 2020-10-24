@@ -59,21 +59,23 @@ function App() {
                 <div className="container__subheading">
                     Give me some expression to have my meaning of life
                 </div>
-                <hr/>
                 <div className="content-container">
                     <div className="post-container">
                         { data.map((item,index) => <Post key={index} { ...item } />) }
                     </div>
                     <div className="post-filter">
-                        <div>
+                        <div className="post-filter__category">
                             Places
                         </div>
-                        <div>
+                        <div className="post-filter__category">
                             People
                         </div>
                     </div>
                 </div>
             </div>
+            <footer>
+                Some footer
+            </footer>
         </div>
     );
 }
