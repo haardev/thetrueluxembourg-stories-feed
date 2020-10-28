@@ -1,10 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import cover from './cover.png';
 import Post from './Post';
+import { fetchPosts } from './apiUtils';
 
 function App() {
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
     const data = [
         {
             coverImage: 'https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/120905141_949896912171028_8125290894200982431_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=104&_nc_ohc=3_OJ0VdAbBwAX_-vfsL&oh=b23470c3659f00df08ef719fc3121df9&oe=5FA7BA6B',
@@ -44,6 +46,14 @@ function App() {
             favorite: true
         }
     ];
+
+    useEffect(() => {
+        const handler = async () => {
+            const posts = await fetchPosts();
+            setPosts(posts);
+        }
+        handler();
+    }, []);
     return (
         <div className="App">
             <header className="App-header">
@@ -55,13 +65,15 @@ function App() {
                 </div>
             </header>
             <div className="container">
-                <div className="container__title">Explore the world of personalities</div>
+                <div className="container__title">
+                    Explore the world of personalities
+                </div>
                 <div className="container__subheading">
                     Give me some expression to have my meaning of life
                 </div>
                 <div className="content-container">
                     <div className="post-container">
-                        { data.map((item,index) => <Post key={index} { ...item } />) }
+                        { posts.map((item,index) => <Post key={index} { ...item } />) }
                     </div>
                     <div className="post-filter">
                         <div className="post-filter__category">
@@ -73,9 +85,6 @@ function App() {
                     </div>
                 </div>
             </div>
-            <footer>
-                Some footer
-            </footer>
         </div>
     );
 }

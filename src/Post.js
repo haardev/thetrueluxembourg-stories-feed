@@ -7,6 +7,7 @@ const Post = ({ coverImage, author, tag, countryCode, title, text }) => {
 
     const renderTrimString = useCallback((inputText) => {
         let res = !isExpanded ? inputText.substring(0, 444) : inputText;
+
         if(res[res.length] === ' ') {
             res = res.substring(0, res.length - 1);
         }
@@ -47,7 +48,14 @@ const Post = ({ coverImage, author, tag, countryCode, title, text }) => {
                 </div>
             </div>
             <div className="post__social-block">
-                
+                <ul>
+                    <li>
+                        <i className="fa fa-heart" aria-hidden="true" />
+                    </li>
+                    <li>
+                        <i className="fa fa-facebook" aria-hidden="true" />
+                    </li>
+                </ul>
             </div>
         </div>
     );

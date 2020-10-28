@@ -2,7 +2,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-
 .App-logo {
     height: 100%;
     object-fit: cover;
@@ -171,6 +170,22 @@ body {
     margin-top: 16px;
 }
 
+.post__social-block {
+    padding-left: 16px;
+    margin-top: 16px;
+}
+
+.post__social-block ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.post__social-block ul li{
+    list-style: none;
+    margin-right: 8px;
+}
+
 .post__read-more__button {
     border: none;
     font-weight: bold;
@@ -189,10 +204,4 @@ body {
     font-weight: bold;
     border-radius: 5px;
     font-size: 12px;
-}
-
-footer {
-    border: 1px solid #dadce0;
-    margin-top: 40px;
-    padding: 24px 16px;
 }
