@@ -49,31 +49,44 @@ function App() {
 
     useEffect(() => {
         const handler = async () => {
+            setLoading(true);
             const posts = await fetchPosts();
             setPosts(posts);
-        }
+            setLoading(false);
+        };
         handler();
     }, []);
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={ cover } className="App-logo" alt="logo"/>
-                <div className="App-header-title">TSome teq hear text
-                    TSome teq hear text
-                    TSome teq hear text
-                    TSome teq hear text
-                </div>
-            </header>
-            <div className="container">
+
+    const renderHeader = () => {
+        return (
+            <div>
+                <header className="App-header">
+                    <img src={ cover } className="App-logo" alt="logo"/>
+                    <div className="App-header-title">
+                        TSome teq hear text
+                        TSome teq hear text
+                        TSome teq hear text
+                        TSome teq hear text
+                    </div>
+                </header>
                 <div className="container__title">
                     Explore the world of personalities
                 </div>
                 <div className="container__subheading">
                     Give me some expression to have my meaning of life
                 </div>
+            </div>
+        );
+    };
+
+    return (
+        <div className="App">
+            {renderHeader()}
+            <div className="container">
                 <div className="content-container">
                     <div className="post-container">
-                        { posts.map((item,index) => <Post key={index} { ...item } />) }
+                        { loading && <h3>Loading stories...</h3> }
+                        { posts.map((item, index) => <Post key={ index } { ...item } />) }
                     </div>
                     <div className="post-filter">
                         <div className="post-filter__category">
