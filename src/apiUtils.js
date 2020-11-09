@@ -26,7 +26,7 @@ export const extractPostFromRaw = (post) => {
         countryCode: tags[0].name,
         author: tags[1].name,
         tag: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, ''),
-        text: post.content.rendered.replace(/<\/?[^>]+(>|$)/g, ''),
+        text: post.content.rendered,
         favorite: true,
         link: post.link
     };

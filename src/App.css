@@ -84,11 +84,12 @@ body {
 }
 
 .post__title {
-    font-size: 24px;
+    font-size: 22px;
     text-align: left;
     padding-left: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin: 16px 0;
+    color: #000000;
+    font-weight: 300;
 }
 
 .content-container {
@@ -185,11 +186,15 @@ body {
     padding: 0;
 }
 
-.post__social-block ul li{
+.post__social-block ul li {
     list-style: none;
-    margin-right: 8px;
-    color: #212123;
+    margin-right: 16px;
     font-size: 24px;
+    cursor: pointer;
+}
+
+.post__social-block ul li a {
+    color: #000000;
 }
 
 .post__read-more__button {
