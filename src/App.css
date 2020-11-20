@@ -109,9 +109,27 @@ body {
 }
 
 .post-filter__category {
-    padding: 12px 8px;
+    padding: 12px 16px 12px 32px;
     border-bottom: 1px solid #dadce0;
-    color: #2962ff;
+    position: relative;
+    border-right:1px solid #dadce0;
+}
+
+.post-filter__category:hover {
+    background-color: #dadce0;
+}
+
+.post-filter__expand {
+    position: absolute;
+    right: 8px;
+    top: 14px;
+}
+
+.post-filter__icon {
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    color: #999999;
 }
 
 .post__header {
@@ -189,8 +207,9 @@ body {
 .post__social-block ul li {
     list-style: none;
     margin-right: 16px;
-    font-size: 24px;
+    font-size: 16px;
     cursor: pointer;
+    color: #000000;
 }
 
 .post__social-block ul li a {
@@ -199,21 +218,9 @@ body {
 
 .post__read-more__button {
     border: none;
-    font-weight: bold;
     background-color: transparent;
     cursor: pointer;
     padding: 0;
     display: inline-block;
-}
-
-.post__read-more button {
-    height: 40px;
-    background-color: white;
-    border: 1px solid crimson;
-    margin-left: 16px;
-    color: black;
-    margin-top: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 12px;
+    opacity: 0.6;
 }

@@ -18,8 +18,14 @@ const Post = ({ coverImage, author, tag, countryCode, title, text, link }) => {
             res = inputText;
         }
 
-        if (res[res.length] === ' ') {
-            res = res.substring(0, res.length - 1);
+        const lastChar = res.slice(res.length - 1);
+        const lastIndex = res.length - 1;
+
+        if (lastChar === ' ') {
+            res = res.substring(0, lastIndex);
+        }
+        else if (res[lastIndex] === '>') {
+            console.log(res);
         }
 
         return (
@@ -40,9 +46,13 @@ const Post = ({ coverImage, author, tag, countryCode, title, text, link }) => {
                 const text = document.createElement('span');
 
                 const renderExpand = () => {
-                    return <span className="post__read-more__button"
-                                 onClick={ () => setExpanded(!isExpanded) }> ... See { isExpanded ? 'less' : 'more' }
-                    </span>;
+                    return (
+                        <span className="post__read-more__button"
+                              onClick={ () => setExpanded(!isExpanded) }> {
+                            isExpanded ? <span style={ { textDecoration: 'underline' } }>
+                                &nbsp;Show less
+                            </span> : <>... <span
+                                style={ { textDecoration: 'underline' } }>Show more</span></> }</span>);
                 };
                 ReactDOM.render(renderExpand(), text);
                 lastChild.appendChild(text);
@@ -53,7 +63,6 @@ const Post = ({ coverImage, author, tag, countryCode, title, text, link }) => {
 
     const handleOnCopyClipboard = (link) => {
         navigator.clipboard.writeText(link).then(() => {
-            console.log('Async: Copying to clipboard was successful!');
         }, (err) => {
             console.error('Async: Could not copy text: ', err);
         });
@@ -99,7 +108,8 @@ const Post = ({ coverImage, author, tag, countryCode, title, text, link }) => {
                         </a>
                     </li>
                     <li>
-                        <i onClick={ () => handleOnCopyClipboard(link) } className="fa fa-clipboard"
+                        <i onClick={ () => handleOnCopyClipboard(link) }
+                           className="fa fa-clipboard"
                            aria-hidden="true"/>
                     </li>
                 </ul>
