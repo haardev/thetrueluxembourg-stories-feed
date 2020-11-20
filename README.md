@@ -1,5 +1,5 @@
 # thetrueluxembourg-stories-feed
-Stories deed which getting data from WordPress API
+Basic Stories feed using data from Wordpress API.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
