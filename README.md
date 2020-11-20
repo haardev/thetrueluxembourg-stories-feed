@@ -1,2 +1,2 @@
 # thetrueluxembourg-stories-feed
-Small stories feed getting data from WordPress API
+Stories deed which getting data from WordPress API
