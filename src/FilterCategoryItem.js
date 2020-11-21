@@ -1,17 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { DataContext } from './DataProvider';
 
-const FilterCategoryItem = ({ id, label, count }) => {
+const ICON_MAP = {
+    'places': 'fa-globe',
+    'people': 'fa-people'
+}
+
+const FilterCategoryItem = ({ id, label, count, slug }) => {
     const [currentOpen, setCurrent] = useState(false);
+    const { action } = useContext(DataContext); // Get the current set ID
 
-    useEffect(() => {
-        //Load all the posts here
-    }, []);
+    const handleOnClick = () => {
+        setCurrent(!currentOpen);
+        action.filterPosts(id);
+    };
+
     return (
         <div className="post-filter__category"
-             onClick={ () => setCurrent(!currentOpen) }>
+             onClick={ handleOnClick }>
             <div className="post-filter__icon">
-                <i className="fa fa-globe" aria-hidden="true"></i>
+                <i className="fa fa-globe" aria-hidden="true"/>
             </div>
             { label } ({ count })
             <div className="post-filter__expand">
@@ -22,6 +31,11 @@ const FilterCategoryItem = ({ id, label, count }) => {
     );
 };
 
-FilterCategoryItem.propTypes = {};
+FilterCategoryItem.propTypes = {
+    id: PropTypes.string,
+    label: PropTypes.string,
+    count: PropTypes.number,
+    slug: PropTypes.string
+};
 
 export default FilterCategoryItem;

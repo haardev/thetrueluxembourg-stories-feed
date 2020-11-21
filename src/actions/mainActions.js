@@ -42,9 +42,14 @@ const getCategories = async (dispatch) => {
     }
 };
 
+const filterPosts = (dispatch, category) => {
+    console.log(category);
+};
+
 export const getActions = (dispatch) => {
     return {
         getPosts: () => getPosts(dispatch),
         getCategories: () => getCategories(dispatch),
+        filterPosts: (category) => filterPosts(dispatch, category)
     };
 };
