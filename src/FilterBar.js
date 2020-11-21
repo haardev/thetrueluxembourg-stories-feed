@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { API_CATEGORIES, categoriesTransformer, fetchCategories } from './apiUtils';
+import React, { useContext, useEffect, useState } from 'react';
 import FilterCategoryItem from './FilterCategoryItem';
-import useFetch from './hooks/useFetch';
+import { DataContext } from './DataProvider';
 
-const FilterBar = props => {
-    const [categories, setCategories] = useState([]);
-    const { data, isLoading } = useFetch(API_CATEGORIES);
-
-    useEffect(() => {
-        if (data) {
-            setCategories(categoriesTransformer(data));
-        }
-    }, [data]);
+const FilterBar = () => {
+    const { state } = useContext(DataContext);
+    const { categories, loading: { categories: isLoading } } = state;
 
     return (
         <div className="post-filter">
@@ -21,7 +13,5 @@ const FilterBar = props => {
         </div>
     );
 };
-
-FilterBar.propTypes = {};
 
 export default FilterBar;
