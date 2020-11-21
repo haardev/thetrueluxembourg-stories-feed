@@ -1,7 +1,8 @@
 import {
     FETCH_CATEGORIES_ERROR,
     FETCH_CATEGORIES_REQUEST,
-    FETCH_CATEGORIES_SUCCESS, FETCH_POSTS_REQUEST,
+    FETCH_CATEGORIES_SUCCESS,
+    FETCH_POSTS_REQUEST,
     FETCH_POSTS_SUCCESS
 } from './actionTypes';
 
@@ -17,7 +18,7 @@ export const initialState = {
 };
 
 export const rootReducer = (state, action) => {
-    switch (action.type) {
+    switch (action.type) { // Refactor to be on value
         case FETCH_CATEGORIES_REQUEST:
             return {
                 ...state,
@@ -33,7 +34,7 @@ export const rootReducer = (state, action) => {
                     ...state.loading,
                     posts: true
                 }
-            }
+            };
         case FETCH_CATEGORIES_SUCCESS:
             return {
                 ...state,

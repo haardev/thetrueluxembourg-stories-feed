@@ -8,12 +8,19 @@ import { DataContext } from './DataProvider';
 import PostsContainer from './PostsContainer';
 
 function App() {
+    const { action } = useContext(DataContext);
+
+    useEffect(() => {
+        action.getCategories();
+        action.getPosts();
+    }, []);
+
     return (
         <div className="App">
             <div className="container">
                 <div className="content-container">
-                    <PostsContainer />
-                    <FilterBar />
+                    <PostsContainer/>
+                    <FilterBar/>
                 </div>
             </div>
         </div>
