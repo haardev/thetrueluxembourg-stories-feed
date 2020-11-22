@@ -10,7 +10,6 @@ const getFilteredPosts = (selectedCategory, posts) => {
     return posts.filter((item) => item.categoryId === selectedCategory);
 };
 
-
 const PostsContainer = () => {
     const { state } = useContext(DataContext);
     const { posts, loading: { posts: isLoading }, selectedCategory } = state;

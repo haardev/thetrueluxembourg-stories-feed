@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import FilterCategoryItem from './FilterCategoryItem';
 import { DataContext } from './DataProvider';
 
@@ -9,7 +9,7 @@ const FilterBar = () => {
     return (
         <div className="post-filter">
             { isLoading && <div> Loading categories...</div> }
-            { categories.map((item) => <FilterCategoryItem { ...item } />) }
+            { categories.map((item) => <FilterCategoryItem key={item.id} { ...item } />) }
         </div>
     );
 };
