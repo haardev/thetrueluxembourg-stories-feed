@@ -101,8 +101,21 @@ export class FrequencyTable {
             }
         }
 
-        //Improve it
-        console.log(possibleResults);
+        const suggestions = [];
+
+        for(const post of this.listOfSearchDocuments) {
+            if(searchValue === post.title.indexOf(searchValue) >= 0 || post.place.indexOf(searchValue) >= 0 ||  post.people.indexOf(searchValue) >= 0) {
+                suggestions.push(post);
+            }
+
+            for(const item of possibleResults) {
+                if(post.frequencyTable.has(item[0])) {
+                    suggestions.push(post);
+                }
+            }
+        }
+
+        return suggestions;
     };
 }
 
