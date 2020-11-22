@@ -8,11 +8,14 @@ const ICON_MAP = {
 };
 
 const FilterCategoryItem = ({ id, label, count, slug }) => {
-    const [currentOpen, setCurrent] = useState(false);
     const { action, state: { selectedCategory } } = useContext(DataContext); // Get the current set ID
 
     const handleOnClick = () => {
-        setCurrent(!currentOpen);
+        if (selectedCategory === id) {
+            action.filterPosts(null);
+            return;
+        }
+
         action.filterPosts(id);
     };
 
