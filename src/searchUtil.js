@@ -88,6 +88,9 @@ export class FrequencyTable {
         }
 
         this.rankListMap = map;
+
+        // TODO: in case of multiple world, split and combine results
+        this.search('the');
     };
 
     search = (searchValue) => {
@@ -99,22 +102,31 @@ export class FrequencyTable {
             }
         }
 
+        possibleResults.sort((a, b) => (a[1].weightIndex  < b[1].weightIndex ) ? 1 : -1);
+
+        console.log(possibleResults);
+
         const suggestions = [];
 
         for(const post of this.listOfSearchDocuments) {
             if(searchValue === post.title.indexOf(searchValue) >= 0 || post.place.indexOf(searchValue) >= 0 ||  post.people.indexOf(searchValue) >= 0) {
-                suggestions.push(post);
+                if(!suggestions.find((item) => post.id === item.id)) {
+                    suggestions.push(post);
+                }
             }
 
             for(const item of possibleResults) {
                 if(post.frequencyTable.has(item[0])) {
-                    suggestions.push(post);
+                    if(!suggestions.find((item) => post.id === item.id)) {
+                        suggestions.push(post);
+                    }
                 }
             }
         }
 
         return suggestions;
     };
+
 }
 
 export class SearchDocument {
