@@ -88,8 +88,6 @@ export class FrequencyTable {
         }
 
         this.rankListMap = map;
-
-        this.search('sun');
     };
 
     search = (searchValue) => {
