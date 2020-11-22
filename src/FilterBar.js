@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import FilterCategoryItem from './FilterCategoryItem';
 import { DataContext } from './DataProvider';
+import SearchBar from './SearchBar';
 
 const FilterBar = () => {
     const { state } = useContext(DataContext);
@@ -10,6 +11,7 @@ const FilterBar = () => {
         <div className="post-filter">
             { isLoading && <div> Loading categories...</div> }
             { categories.map((item) => <FilterCategoryItem key={item.id} { ...item } />) }
+            <SearchBar />
         </div>
     );
 };

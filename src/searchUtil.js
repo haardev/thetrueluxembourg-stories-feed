@@ -90,7 +90,7 @@ export class FrequencyTable {
         this.rankListMap = map;
 
         // TODO: in case of multiple world, split and combine results
-        this.search('the');
+        this.search('thing');
     };
 
     search = (searchValue) => {
@@ -103,8 +103,6 @@ export class FrequencyTable {
         }
 
         possibleResults.sort((a, b) => (a[1].weightIndex  < b[1].weightIndex ) ? 1 : -1);
-
-        console.log(possibleResults);
 
         const suggestions = [];
 
