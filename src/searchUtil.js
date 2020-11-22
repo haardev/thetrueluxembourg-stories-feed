@@ -101,6 +101,7 @@ export class FrequencyTable {
             }
         }
 
+        //Improve it
         console.log(possibleResults);
     };
 }
