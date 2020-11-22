@@ -4,7 +4,8 @@ import {
     FETCH_CATEGORIES_SUCCESS,
     FETCH_POSTS_ERROR,
     FETCH_POSTS_REQUEST,
-    FETCH_POSTS_SUCCESS
+    FETCH_POSTS_SUCCESS,
+    FILTER_POSTS
 } from '../reducers/actionTypes';
 import { fetchCategories, fetchPosts } from '../apiUtils';
 
@@ -43,7 +44,11 @@ const getCategories = async (dispatch) => {
 };
 
 const filterPosts = (dispatch, category) => {
-    console.log(category);
+    //TODO: Maybe it should do again another API call in the future but for 100 posts it's should be fine.
+    dispatch({
+        type: FILTER_POSTS,
+        payload: category
+    });
 };
 
 export const getActions = (dispatch) => {

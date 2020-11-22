@@ -3,7 +3,7 @@ import {
     FETCH_CATEGORIES_REQUEST,
     FETCH_CATEGORIES_SUCCESS,
     FETCH_POSTS_REQUEST,
-    FETCH_POSTS_SUCCESS
+    FETCH_POSTS_SUCCESS, FILTER_POSTS
 } from './actionTypes';
 
 export const initialState = {
@@ -14,7 +14,8 @@ export const initialState = {
         posts: false
     },
     error: null,
-    posts: []
+    posts: [],
+    selectedCategory: null
 };
 
 export const rootReducer = (state, action) => {
@@ -64,6 +65,12 @@ export const rootReducer = (state, action) => {
                 },
                 posts: action.payload
             };
+        case FILTER_POSTS:{
+            return {
+                ...state,
+                selectedCategory: action.payload
+            }
+        }
     }
     return state;
 };

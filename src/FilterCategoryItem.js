@@ -1,32 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { DataContext } from './DataProvider';
 
 const ICON_MAP = {
     'places': 'fa-globe',
-    'people': 'fa-people'
-}
+    'people': 'fa-users'
+};
 
 const FilterCategoryItem = ({ id, label, count, slug }) => {
-    const [currentOpen, setCurrent] = useState(false);
-    const { action } = useContext(DataContext); // Get the current set ID
+    const { action, state: { selectedCategory } } = useContext(DataContext); // Get the current set ID
 
     const handleOnClick = () => {
-        setCurrent(!currentOpen);
+        if (selectedCategory === id) {
+            action.filterPosts(null);
+            return;
+        }
+
         action.filterPosts(id);
     };
 
+    const baseClassName = 'post-filter__';
+    const activeState = `${ baseClassName }category ${ selectedCategory === id ? `${ baseClassName }category--selected` : '' }`;
+
     return (
-        <div className="post-filter__category"
+        <div className={ activeState }
              onClick={ handleOnClick }>
-            <div className="post-filter__icon">
-                <i className="fa fa-globe" aria-hidden="true"/>
+            <div className={ `${ baseClassName }icon` }>
+                <i className={ `fa ${ ICON_MAP[slug] }` } aria-hidden="true"/>
             </div>
             { label } ({ count })
-            <div className="post-filter__expand">
-                <i className={ `fa fa-caret-${ currentOpen === true ? 'up' : 'down' }` }
-                   aria-hidden="true"/>
-            </div>
         </div>
     );
 };
