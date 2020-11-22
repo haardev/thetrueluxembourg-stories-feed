@@ -34,7 +34,7 @@ const FilterCategoryItem = ({ id, label, count, slug }) => {
 };
 
 FilterCategoryItem.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     label: PropTypes.string,
     count: PropTypes.number,
     slug: PropTypes.string

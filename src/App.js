@@ -1,8 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
-import cover from './cover.png';
-import Post from './Post';
-import { fetchPosts } from './apiUtils';
 import FilterBar from './FilterBar';
 import { DataContext } from './DataProvider';
 import PostsContainer from './PostsContainer';
@@ -13,6 +10,7 @@ function App() {
     useEffect(() => {
         action.getCategories();
         action.getPosts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

@@ -5,6 +5,7 @@ import {
     FETCH_POSTS_REQUEST,
     FETCH_POSTS_SUCCESS, FILTER_POSTS
 } from './actionTypes';
+import { FrequencyTable } from '../searchUtil';
 
 export const initialState = {
     categories: [],
@@ -15,7 +16,8 @@ export const initialState = {
     },
     error: null,
     posts: [],
-    selectedCategory: null
+    selectedCategory: null,
+    search: null
 };
 
 export const rootReducer = (state, action) => {
@@ -57,6 +59,7 @@ export const rootReducer = (state, action) => {
                 error: null
             };
         case FETCH_POSTS_SUCCESS:
+            const search = new FrequencyTable(action.payload);
             return {
                 ...state,
                 loading: {
@@ -71,6 +74,10 @@ export const rootReducer = (state, action) => {
                 selectedCategory: action.payload
             }
         }
+        default: {
+            return {
+                ...state
+            }
+        }
     }
-    return state;
 };

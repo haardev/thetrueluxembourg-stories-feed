@@ -51,7 +51,8 @@ export const extractPostFromRaw = (post) => {
         text: post.content.rendered,
         favorite: true,
         link: post.link,
-        categoryId: post.categories[0]
+        categoryId: post.categories[0],
+        id: post.id
     };
 };
 
