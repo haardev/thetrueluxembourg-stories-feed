@@ -50,7 +50,8 @@ export const extractPostFromRaw = (post) => {
         tag: post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, ''),
         text: post.content.rendered,
         favorite: true,
-        link: post.link
+        link: post.link,
+        categoryId: post.categories[0]
     };
 };
 

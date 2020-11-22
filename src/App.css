@@ -1,3 +1,7 @@
+:root {
+    --main-bg-color: #dadce0;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -110,13 +114,18 @@ body {
 
 .post-filter__category {
     padding: 12px 16px 12px 32px;
-    border-bottom: 1px solid #dadce0;
+    border-bottom: 1px solid var(--main-bg-color);
     position: relative;
-    border-right:1px solid #dadce0;
+    border-right: 1px solid var(--main-bg-color);
+    cursor: pointer;
+}
+
+.post-filter__category--selected{
+    background-color: var(--main-bg-color);
 }
 
 .post-filter__category:hover {
-    background-color: #dadce0;
+    background-color: #ECEDEF;
 }
 
 .post-filter__expand {
@@ -135,7 +144,7 @@ body {
 .post__header {
     font-size: 16px;
     background-color: whitesmoke;
-    border-bottom: 1px solid #dadce0;
+    border-bottom: 1px solid var(--main-bg-color);
     padding: 16px 0 16px 16px;
     margin-bottom: 16px;
 }
