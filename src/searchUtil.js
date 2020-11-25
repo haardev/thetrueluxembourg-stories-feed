@@ -107,7 +107,7 @@ export class FrequencyTable {
         const suggestions = [];
 
         for(const post of this.listOfSearchDocuments) {
-            if(searchValue === post.title.indexOf(searchValue) >= 0 || post.place.indexOf(searchValue) >= 0 ||  post.people.indexOf(searchValue) >= 0) {
+            if(post.title.indexOf(searchValue) >= 0 || post.place.indexOf(searchValue) >= 0 ||  post.people.indexOf(searchValue) >= 0) {
                 if(!suggestions.find((item) => post.id === item.id)) {
                     suggestions.push(post);
                 }

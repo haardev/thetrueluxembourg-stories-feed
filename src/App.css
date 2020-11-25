@@ -141,6 +141,46 @@ body {
     color: #999999;
 }
 
+.post-filter__search {
+    position: relative;
+    margin-top: 16px;
+    display: flex;
+    padding-left: 8px;
+}
+
+.post-filter__search-input {
+    padding: 13px 6px;
+    border: 1px solid var(--main-bg-color);
+    border-radius: 1px;
+    outline: none;
+    flex-basis: 75%;
+    font-size: 16px;
+}
+
+.post-filter__search-submit {
+    background-color: white;
+    border-radius: 1px;
+    outline: none;
+    border: 1px solid black;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.post-filter__suggestion {
+    display: block;
+    padding: 0 0 0 10px;
+}
+
+.post-filter__suggestion li {
+    list-style: none;
+    padding: 8px 0;
+    border-top: 1px solid var(--main-bg-color);
+}
+
+.post-filter__suggestion li:last-child {
+    border-bottom: 1px solid var(--main-bg-color);
+}
+
 .post__header {
     font-size: 16px;
     background-color: whitesmoke;
