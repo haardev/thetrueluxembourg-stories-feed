@@ -7,6 +7,10 @@ const SearchBar = () => {
     const { searchQuery } = state;
     const { setSearchQuery } = action;
 
+    const handleOnClick = () => {
+        action.filterPosts(null);
+    };
+
     return (
         <div>
             <div className="post-filter__search">
@@ -15,8 +19,8 @@ const SearchBar = () => {
                        onChange={ (e) => setSearchQuery(e.target.value) }
                        className="post-filter__search-input"/>
                 <button className="post-filter__search-submit"
-                        onClick={ () => alert(searchQuery) }>
-                    Search
+                        onClick={ handleOnClick }>
+                    Clear
                 </button>
             </div>
             <Suggestions/>

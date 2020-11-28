@@ -9,7 +9,7 @@ const FilterBar = () => {
 
     return (
         <div className="post-filter">
-            { isLoading && <div> Loading categories...</div> }
+            { isLoading && <div><strong>Loading categories...</strong></div> }
             { categories.map((item) => <FilterCategoryItem key={item.id} { ...item } />) }
             <SearchBar />
         </div>
