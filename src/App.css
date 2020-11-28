@@ -1,5 +1,6 @@
 :root {
     --main-bg-color: #dadce0;
+    --hover-bg-color: #E8EAEC;
 }
 
 body {
@@ -124,7 +125,13 @@ body {
     background-color: var(--main-bg-color);
 }
 
-.post-filter__category:hover {
+.post-filter__category:hover
+{
+    background-color: var(--hover-bg-color);
+}
+
+.post-filter--selected
+{
     background-color: var(--main-bg-color);
 }
 
@@ -193,7 +200,7 @@ body {
 }
 
 .post-filter__suggestion li:hover {
-    background-color: var(--main-bg-color);
+    background-color: var(--hover-bg-color);
 }
 
 .post-filter__suggestion li:last-child {

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SuggestionItem = ({ id, label, onClick, image }) => {
+const SuggestionItem = ({ id, label, onClick, image, isSelected }) => {
+    const className = isSelected ? 'post-filter--selected' : '';
     return (
-        <li onClick={ () => onClick(id) }>
+        <li className={ className }
+            onClick={ () => onClick(id) }>
             <div>
-                <img src={ image } style={ { maxHeight: '40px' } }/>
+                <img src={ image } alt="N/A"/>
             </div>
             <div>
                 { label }
@@ -18,7 +20,8 @@ SuggestionItem.propTypes = {
     id: PropTypes.number,
     label: PropTypes.string,
     onClick: PropTypes.func,
-    image: PropTypes.string
+    image: PropTypes.string,
+    isSelected: PropTypes.bool
 };
 
 export default SuggestionItem;

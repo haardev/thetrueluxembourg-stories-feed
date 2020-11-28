@@ -7,7 +7,7 @@ import { Filter, FILTER_TYPES } from '../../Filter';
 
 const Suggestions = () => {
     const { state, action } = useContext(DataContext);
-    const { searchQuery, posts } = state;
+    const { searchQuery, posts, filter } = state;
     const [suggestions, setSuggestions] = useState([]);
 
     const searchSuggestion = useCallback((value) => {
@@ -42,6 +42,7 @@ const Suggestions = () => {
     const renderSuggestions = () => {
         return suggestions.map(({ id, title, coverImage }) => {
             return <SuggestionItem key={ id }
+                                   isSelected={filter && filter.value === id}
                                    onClick={ handleOnClick }
                                    image={ coverImage }
                                    id={ id }

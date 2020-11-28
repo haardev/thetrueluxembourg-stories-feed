@@ -15,6 +15,7 @@ const SearchBar = () => {
         <div>
             <div className="post-filter__search">
                 <input type="text"
+                       placeholder="Type to search"
                        value={ searchQuery }
                        onChange={ (e) => setSearchQuery(e.target.value) }
                        className="post-filter__search-input"/>
