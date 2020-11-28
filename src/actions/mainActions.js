@@ -44,7 +44,7 @@ const getCategories = async (dispatch) => {
 };
 
 const filterPosts = (dispatch, category) => {
-    //TODO: Maybe it should do again another API call in the future but for 100 posts it's should be fine.
+    //TODO: it should do again another API call in the future but for 100 posts it's should be fine.
     dispatch({
         type: FILTER_POSTS,
         payload: category

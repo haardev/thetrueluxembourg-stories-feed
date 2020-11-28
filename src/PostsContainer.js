@@ -1,23 +1,37 @@
 import React, { useContext } from 'react';
 import Post from './Post';
 import { DataContext } from './DataProvider';
+import { FILTER_TYPES } from './Filter';
 
-const getFilteredPosts = (selectedCategory, posts) => {
-    if (!selectedCategory) {
+const getFilteredPosts = (filter, posts) => {
+    if (!filter) {
         return posts;
     }
 
-    return posts.filter((item) => item.categoryId === selectedCategory);
+    let key = '';
+
+    switch (filter.type) {
+        case FILTER_TYPES.category: {
+            key = 'categoryId';
+            break;
+        }
+        case FILTER_TYPES.post: {
+            key = 'id';
+            break;
+        }
+    }
+
+    return posts.filter((item) => item[key] === filter.value);
 };
 
 const PostsContainer = () => {
     const { state } = useContext(DataContext);
-    const { posts, loading: { posts: isLoading }, selectedCategory } = state;
+    const { posts, loading: { posts: isLoading }, filter } = state;
 
     return (
         <div className="post-container">
             { isLoading && <h3>Loading stories...</h3> }
-            { getFilteredPosts(selectedCategory, posts).map((item, index) => <Post key={ index } { ...item } />) }
+            { getFilteredPosts(filter, posts).map((item, index) => <Post key={ index } { ...item } />) }
         </div>
     );
 };

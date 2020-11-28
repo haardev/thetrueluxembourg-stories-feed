@@ -16,7 +16,7 @@ export const initialState = {
     },
     error: null,
     posts: [],
-    selectedCategory: null,
+    filter: null,
     searchQuery: ''
 };
 
@@ -71,7 +71,7 @@ export const rootReducer = (state, action) => {
         case FILTER_POSTS:{
             return {
                 ...state,
-                selectedCategory: action.payload
+                filter: action.payload
             }
         }
         case SET_SEARCH_QUERY: {

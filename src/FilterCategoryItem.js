@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { DataContext } from './DataProvider';
+import { Filter, FILTER_TYPES } from './Filter';
 
 const ICON_MAP = {
     'places': 'fa-globe',
@@ -15,8 +16,8 @@ const FilterCategoryItem = ({ id, label, count, slug }) => {
             action.filterPosts(null);
             return;
         }
-
-        action.filterPosts(id);
+        
+        action.filterPosts(new Filter(id, FILTER_TYPES.category));
     };
 
     const baseClassName = 'post-filter__';

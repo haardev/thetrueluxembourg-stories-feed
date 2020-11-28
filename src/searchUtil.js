@@ -33,7 +33,6 @@ export const getFrequencyTable = (listOfWords) => {
 };
 
 export class FrequencyTable {
-    map = new Map();
     listOfSearchDocuments = [];
     rankListMap = new Map();
 
@@ -60,14 +59,14 @@ export class FrequencyTable {
 
         let result = [];
 
-        for(const mapResult of maps) {
+        for (const mapResult of maps) {
             result = [...result, ...([...mapResult])];
         }
 
         const map = new Map();
 
         for (const item of result) {
-            if(!map.has(item[0])) {
+            if (!map.has(item[0])) {
                 map.set(item[0], item[1]);
             }
             else {
@@ -78,9 +77,9 @@ export class FrequencyTable {
             }
         }
 
-        for(const item of map) {
+        for (const item of map) {
             const values = item[1];
-            values.rankIndex = 1 + Math.log(this.listOfSearchDocuments.length /(values.frequencyInDocument + 1));
+            values.rankIndex = 1 + Math.log(this.listOfSearchDocuments.length / (values.frequencyInDocument + 1));
             values.norm = 1 / Math.sqrt(values.frequencyInDocument);
             values.weightIndex = values.rankIndex * values.norm * values.frequencyInDocument;
             map.set(item[0], values);
@@ -89,28 +88,31 @@ export class FrequencyTable {
         this.rankListMap = map;
     };
 
+    //NOTE: Always lower case
     search = (searchValue) => {
         const possibleResults = [];
 
-        for(const item of this.rankListMap) {
-            if(item[0].indexOf(searchValue) >= 0) {
+        for (const item of this.rankListMap) {
+            if (item[0].indexOf(searchValue) >= 0) {
                 possibleResults.push(item);
             }
         }
 
-        possibleResults.sort((a, b) => (a[1].weightIndex  < b[1].weightIndex ) ? 1 : -1);
+        possibleResults.sort((a, b) => (a[1].weightIndex < b[1].weightIndex) ? 1 : -1);
 
         const suggestions = [];
-        for(const post of this.listOfSearchDocuments) {
-            if(post.title.indexOf(searchValue) >= 0 || post.place.indexOf(searchValue) >= 0 ||  post.people.indexOf(searchValue) >= 0) {
-                if(!suggestions.find((item) => post.id === item.id)) {
+        for (const post of this.listOfSearchDocuments) {
+            const { title, place, people } = post;
+            if (title.toLowerCase().indexOf(searchValue) >= 0 || place.toLowerCase()
+                .indexOf(searchValue) >= 0 || people.toLowerCase().indexOf(searchValue) >= 0) {
+                if (!suggestions.find((item) => post.id === item.id)) {
                     suggestions.push(post);
                 }
             }
 
-            for(const item of possibleResults) {
-                if(post.frequencyTable.has(item[0])) {
-                    if(!suggestions.find((item) => post.id === item.id)) {
+            for (const item of possibleResults) {
+                if (post.frequencyTable.has(item[0])) {
+                    if (!suggestions.find((item) => post.id === item.id)) {
                         suggestions.push(post);
                     }
                 }

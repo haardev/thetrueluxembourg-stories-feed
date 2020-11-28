@@ -125,7 +125,7 @@ body {
 }
 
 .post-filter__category:hover {
-    background-color: #ECEDEF;
+    background-color: var(--main-bg-color);
 }
 
 .post-filter__expand {
@@ -161,7 +161,7 @@ body {
     background-color: white;
     border-radius: 1px;
     outline: none;
-    border: 1px solid black;
+    border: 1px solid var(--main-bg-color);
     margin-left: 8px;
     cursor: pointer;
 }
@@ -173,8 +173,27 @@ body {
 
 .post-filter__suggestion li {
     list-style: none;
-    padding: 8px 0;
+    padding: 12px 0 12px 4px;
     border-top: 1px solid var(--main-bg-color);
+    cursor: pointer;
+    color: black;
+    font-size: 14px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+.post-filter__suggestion li img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 8px;
+    flex: 1;
+}
+
+.post-filter__suggestion li:hover {
+    background-color: var(--main-bg-color);
 }
 
 .post-filter__suggestion li:last-child {

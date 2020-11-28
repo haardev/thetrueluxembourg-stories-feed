@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SuggestionItem = ({ id, label, onClick }) => {
+const SuggestionItem = ({ id, label, onClick, image }) => {
     return (
         <li onClick={ () => onClick(id) }>
-            { label }
+            <div>
+                <img src={ image } style={ { maxHeight: '40px' } }/>
+            </div>
+            <div>
+                { label }
+            </div>
         </li>
     );
 };
@@ -12,7 +17,8 @@ const SuggestionItem = ({ id, label, onClick }) => {
 SuggestionItem.propTypes = {
     id: PropTypes.number,
     label: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    image: PropTypes.string
 };
 
 export default SuggestionItem;
