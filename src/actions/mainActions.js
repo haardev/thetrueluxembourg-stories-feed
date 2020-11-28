@@ -5,7 +5,7 @@ import {
     FETCH_POSTS_ERROR,
     FETCH_POSTS_REQUEST,
     FETCH_POSTS_SUCCESS,
-    FILTER_POSTS
+    FILTER_POSTS, SET_SEARCH_QUERY
 } from '../reducers/actionTypes';
 import { fetchCategories, fetchPosts } from '../apiUtils';
 
@@ -51,10 +51,18 @@ const filterPosts = (dispatch, category) => {
     });
 };
 
+export const setSearchQuery = (dispatch, searchQuery) => {
+  dispatch({
+      type: SET_SEARCH_QUERY,
+      payload: searchQuery
+  })
+};
+
 export const getActions = (dispatch) => {
     return {
         getPosts: () => getPosts(dispatch),
         getCategories: () => getCategories(dispatch),
-        filterPosts: (category) => filterPosts(dispatch, category)
+        filterPosts: (category) => filterPosts(dispatch, category),
+        setSearchQuery: (searchQuery) => setSearchQuery(dispatch, searchQuery)
     };
 };

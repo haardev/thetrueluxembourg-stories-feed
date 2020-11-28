@@ -6,7 +6,6 @@ export const convertTextToFrequencyTable = (inputText) => {
     return getFrequencyTable(transformedListOfWords);
 };
 
-
 export const getFrequencyTable = (listOfWords) => {
     const map = new Map();
     for (const word of listOfWords) {
@@ -88,9 +87,6 @@ export class FrequencyTable {
         }
 
         this.rankListMap = map;
-
-        // TODO: in case of multiple world, split and combine results
-        this.search('thing');
     };
 
     search = (searchValue) => {
@@ -105,7 +101,6 @@ export class FrequencyTable {
         possibleResults.sort((a, b) => (a[1].weightIndex  < b[1].weightIndex ) ? 1 : -1);
 
         const suggestions = [];
-
         for(const post of this.listOfSearchDocuments) {
             if(post.title.indexOf(searchValue) >= 0 || post.place.indexOf(searchValue) >= 0 ||  post.people.indexOf(searchValue) >= 0) {
                 if(!suggestions.find((item) => post.id === item.id)) {

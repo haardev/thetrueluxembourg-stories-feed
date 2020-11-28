@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import Suggestions from './Suggestions';
+import React, { useContext } from 'react';
+import Suggestions from './components/suggestions/Suggestions';
+import { DataContext } from './DataProvider';
 
 const SearchBar = () => {
-    const [searchQuery, setSearchQuery] = useState('');
+    const { state, action } = useContext(DataContext);
+    const { searchQuery } = state;
+    const { setSearchQuery } = action;
 
     return (
         <div>
@@ -16,11 +19,9 @@ const SearchBar = () => {
                     Search
                 </button>
             </div>
-            <Suggestions />
+            <Suggestions/>
         </div>
     );
 };
-
-SearchBar.propTypes = {};
 
 export default SearchBar;
