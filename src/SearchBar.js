@@ -9,6 +9,7 @@ const SearchBar = () => {
 
     const handleOnClick = () => {
         action.filterPosts(null);
+        setSearchQuery('');
     };
 
     return (

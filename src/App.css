@@ -106,11 +106,13 @@ body {
 }
 
 .post-filter {
-    height: auto;
     width: 300px;
     margin-left: 30px;
     position: sticky;
     border-left: 1px solid #dadce0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .post-filter__category {
