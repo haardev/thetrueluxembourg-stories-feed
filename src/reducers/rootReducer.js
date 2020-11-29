@@ -3,9 +3,10 @@ import {
     FETCH_CATEGORIES_REQUEST,
     FETCH_CATEGORIES_SUCCESS,
     FETCH_POSTS_REQUEST,
-    FETCH_POSTS_SUCCESS, FILTER_POSTS, SET_SEARCH_QUERY
+    FETCH_POSTS_SUCCESS,
+    FILTER_POSTS,
+    SET_SEARCH_QUERY
 } from './actionTypes';
-import { FrequencyTable } from '../searchUtil';
 
 export const initialState = {
     categories: [],
@@ -59,7 +60,6 @@ export const rootReducer = (state, action) => {
                 error: null
             };
         case FETCH_POSTS_SUCCESS:
-            const search = new FrequencyTable(action.payload);
             return {
                 ...state,
                 loading: {
@@ -68,22 +68,22 @@ export const rootReducer = (state, action) => {
                 },
                 posts: action.payload
             };
-        case FILTER_POSTS:{
+        case FILTER_POSTS: {
             return {
                 ...state,
                 filter: action.payload
-            }
+            };
         }
         case SET_SEARCH_QUERY: {
             return {
                 ...state,
                 searchQuery: action.payload
-            }
+            };
         }
         default: {
             return {
                 ...state
-            }
+            };
         }
     }
 };

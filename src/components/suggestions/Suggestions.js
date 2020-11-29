@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { DataContext } from '../../DataProvider';
 import { FrequencyTable } from '../../searchUtil';
 import SuggestionItem from './SuggestionItem';
@@ -26,10 +25,11 @@ const Suggestions = () => {
             if (suggestionsResult.includes(item.id)) {
                 return item;
             }
+            else return null;
         });
 
         setSuggestions(result);
-    }, [searchQuery]);
+    }, [searchQuery, posts, searchSuggestion]);
 
     const renderNoSuggestionsFound = () => {
         return (
@@ -42,7 +42,7 @@ const Suggestions = () => {
     const renderSuggestions = () => {
         return suggestions.map(({ id, title, coverImage }) => {
             return <SuggestionItem key={ id }
-                                   isSelected={filter && filter.value === id}
+                                   isSelected={ filter && filter.value === id }
                                    onClick={ handleOnClick }
                                    image={ coverImage }
                                    id={ id }

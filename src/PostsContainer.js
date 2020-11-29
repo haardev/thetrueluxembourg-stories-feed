@@ -19,6 +19,9 @@ const getFilteredPosts = (filter, posts) => {
             key = 'id';
             break;
         }
+        default: {
+            key = '';
+        }
     }
 
     return posts.filter((item) => item[key] === filter.value);
