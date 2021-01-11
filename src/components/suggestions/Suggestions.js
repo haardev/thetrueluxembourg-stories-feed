@@ -31,7 +31,7 @@ const Suggestions = () => {
         setSuggestions(result);
     }, [searchQuery, posts, searchSuggestion]);
 
-    const renderNoSuggestionsFound = () => {
+    const NoSuggestionsFound = () => {
         return (
             <div>
                 <strong>No posts found</strong>
@@ -39,7 +39,7 @@ const Suggestions = () => {
         );
     };
 
-    const renderSuggestions = () => {
+    const ListOfSuggestions = () => {
         return suggestions.map(({ id, title, coverImage }) => {
             return <SuggestionItem key={ id }
                                    isSelected={ filter && filter.value === id }
@@ -52,8 +52,8 @@ const Suggestions = () => {
 
     return (
         <ul className="post-filter__suggestion">
-            { searchQuery && renderSuggestions() }
-            { suggestions.length === 0 && searchQuery && renderNoSuggestionsFound() }
+            { searchQuery && <ListOfSuggestions /> }
+            { suggestions.length === 0 && searchQuery && <NoSuggestionsFound /> }
         </ul>
     );
 };

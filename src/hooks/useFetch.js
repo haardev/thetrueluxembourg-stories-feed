@@ -19,11 +19,13 @@ const useFetch = (url = false) => {
                     setHasError(true);
                     setErrorMessage(result);
                 }
-                setIsLoading(false);
             }
             catch (err) {
                 setHasError(true);
                 setErrorMessage(err.message);
+
+            }
+            finally {
                 setIsLoading(false);
             }
         };

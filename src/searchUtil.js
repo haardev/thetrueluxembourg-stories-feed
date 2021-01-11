@@ -44,7 +44,13 @@ export class FrequencyTable {
     transformPosts = (rawListOfPosts) => {
         let results = [];
         for (const post of rawListOfPosts) {
-            const { tag, text, countryCode, id, title } = post;
+            const {
+                tag,
+                text,
+                countryCode,
+                id,
+                title
+            } = post;
             results.push(new SearchDocument(id, title, countryCode, tag, text));
         }
 
@@ -102,7 +108,11 @@ export class FrequencyTable {
 
         const suggestions = [];
         for (const post of this.listOfSearchDocuments) {
-            const { title, place, people } = post;
+            const {
+                title,
+                place,
+                people
+            } = post;
             if (title.toLowerCase().indexOf(searchValue) >= 0 || place.toLowerCase()
                 .indexOf(searchValue) >= 0 || people.toLowerCase().indexOf(searchValue) >= 0) {
                 if (!suggestions.find((item) => post.id === item.id)) {
@@ -121,7 +131,6 @@ export class FrequencyTable {
 
         return suggestions;
     };
-
 }
 
 export class SearchDocument {

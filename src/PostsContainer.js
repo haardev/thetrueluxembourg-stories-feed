@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Post from './Post';
 import { DataContext } from './DataProvider';
 import { FILTER_TYPES } from './Filter';
@@ -30,6 +30,10 @@ const getFilteredPosts = (filter, posts) => {
 const PostsContainer = () => {
     const { state } = useContext(DataContext);
     const { posts, loading: { posts: isLoading }, filter } = state;
+
+    useEffect(() => {
+        //Get the posts and filter, compare to where it should go
+    }, [posts, filter]);
 
     return (
         <div className="post-container">

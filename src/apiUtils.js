@@ -1,4 +1,4 @@
-export const DOM_ELEMENT = document.getElementById('root');
+export const DOM_ELEMENT = document.getElementById('root'); // Not optimal
 
 export const API_URL = DOM_ELEMENT.dataset.apiUrl;
 export const API_CATEGORIES = DOM_ELEMENT.dataset.apiCategories;
