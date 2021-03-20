@@ -1,13 +1,28 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { DataContext } from './DataProvider';
 
 const MAX_CHARACTERS_FOR_EXPAND = 444;
 
-const Post = ({ coverImage, author, tag, countryCode, title, text, link }) => {
+const Post = ({ coverImage, author, tag, countryCode, title, text, link, id }) => {
     const [isExpanded, setExpanded] = useState(false);
     const textRef = useRef(null);
     const htmlParsedRef = useRef(null);
+    const containerRef = useRef(null);
+    const { state } = useContext(DataContext);
+    const { filter } = state;
+
+    const isSelected = filter && filter.value === id;
+
+    useEffect(() => {
+        if(isSelected) {
+            setExpanded(false);
+            if(containerRef.current) {
+                containerRef.current.scrollIntoView();
+            }
+        }
+    }, [isSelected, filter]);
 
     const renderTrimString = useCallback((inputText) => {
         let res;
@@ -69,7 +84,7 @@ const Post = ({ coverImage, author, tag, countryCode, title, text, link }) => {
     };
 
     return (
-        <div className="post">
+        <div className="post" ref={containerRef}>
             <div className="post__title">
                 { title }
             </div>

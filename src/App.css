@@ -50,7 +50,7 @@ body {
 .container {
     max-width: 950px;
     margin: 0 auto;
-    padding-top: 60px;
+    padding-top: 18px;
     width: 100%;
 }
 
@@ -118,9 +118,7 @@ body {
 }
 
 .post-filter__wrapper {
-    border-top: 1px solid var(--main-bg-color);
-    border-left: 1px solid var(--main-bg-color);
-    border-bottom:  1px solid var(--main-bg-color);
+    border: 1px solid var(--main-bg-color);
 }
 
 .post-filter__category {
@@ -162,7 +160,7 @@ body {
     position: relative;
     margin-top: 16px;
     display: flex;
-    padding-left: 8px;
+    padding: 0 8px;
 }
 
 .post-filter__search-input {
